@@ -57,6 +57,19 @@ export const Form = ({ conversionPageUrl }) => {
             />
           </div>
 
+             {/* Phone number - Optional */}
+             <div> 
+            <Input
+              label='Phone number'
+              name='phoneNumber'
+              id='phoneNumber'
+              type='tel'
+              placeholder='Phone number'
+              register={...register('phoneNumber', {
+                required: false,
+              })}
+            />
+
           {/* Last name - Required */}
           <div>
             <Input
@@ -86,18 +99,7 @@ export const Form = ({ conversionPageUrl }) => {
             />
           </div>
           
-             {/* Phone number - Optional */}
-          <div> 
-            <Input
-              label='Phone number'
-              name='phoneNumber'
-              id='phoneNumber'
-              type='tel'
-              placeholder='Phone number'
-              register={...register('phoneNumber', {
-                required: false,
-              })}
-            />
+          
           </div> 
 
           {/* Dropdown Field - Required */}
