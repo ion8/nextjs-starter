@@ -52,7 +52,7 @@ export const SecondaryButton = ({
       id={id}
       href={link}
       className={
-        'flex justify-center items-senter py-4 rounded-[5px] text-white bg-cyan px-5 focus:outline-none focus:ring-none hover:bg-cobalt font-bold ' +
+        'flex justify-center items-center py-4 rounded-[5px] text-white bg-cyan px-5 focus:outline-none focus:ring-none hover:bg-cobalt font-bold ' +
         className
       }
       {...props}>
