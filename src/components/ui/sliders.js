@@ -21,8 +21,8 @@ export const Gallery = () => {
       imgAlt: 'nature image',
     },
     {
-      // UI/UX visual test scenario for Meticulous AI - broken link
-      imgSrc: 'https://via.placeholder.com',
+      // UI/UX visual test scenario for Meticulous AI - broken image link fixed
+      imgSrc: 'https://via.placeholder.com/600x400/EBF3F9/000000',
       imgAlt: 'nature image',
     },
     {
