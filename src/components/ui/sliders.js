@@ -16,7 +16,13 @@ register();
 export const Gallery = () => {
   const GalleryImages = [
     {
-      imgSrc: 'https://via.placeholder.com/600x400/00455F/ffffff',
+      // UI/UX visual test scenario for Meticulous AI - change to the colors
+      imgSrc: 'https://via.placeholder.com/600x400/E113F9/000000',
+      imgAlt: 'nature image',
+    },
+    {
+      // UI/UX visual test scenario for Meticulous AI - broken link
+      imgSrc: 'https://via.placeholder.com',
       imgAlt: 'nature image',
     },
     {
