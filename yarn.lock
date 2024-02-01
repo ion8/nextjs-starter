@@ -867,10 +867,10 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-"@next/codemod@^14.0.2":
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/@next/codemod/-/codemod-14.0.2.tgz#80c0ee2987abba5f9b771d8ac5491e8d9baf3c58"
-  integrity sha512-Z5GoEao21Mmbq/4mnjYLerjhb8KGrasuPfC/FzpnDDfrb3OxRByDnm3m2+opWaIlwlXhzp/aXAOS/FbEOYT/JQ==
+"@next/codemod@^14.1.0":
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/@next/codemod/-/codemod-14.1.0.tgz#165f4139967511c1c8cce21f4ef96e7efb4e4f92"
+  integrity sha512-077ew7daB6/PxnSsanNQQDiD0dvhMQYXtsCm9OTTltc18EaAU68qPxb9RSyMeaNEfBQS8cfoCqvbyVpy7PAXGg==
   dependencies:
     cheerio "1.0.0-rc.9"
     execa "4.0.3"
