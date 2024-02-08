@@ -47,17 +47,7 @@ const TransparentVideoTest = () => {
           type='video/webm'
         />
       </video>
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: -10,
-          backgroundImage: `url(${bg})`,
-        }}
-      />
+      <div className='fixed top-0 left-0 w-full h-full -z-10 bg-transparent' style={{ backgroundImage: `url(${bg})` }} />
       <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-3/4 h-3/4 bg-transparent flex justify-center items-center'>
         <H1>above above above above</H1>
       </div>
