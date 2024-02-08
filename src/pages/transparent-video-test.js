@@ -2,8 +2,6 @@ import { H1 } from '@/components/ui/typography';
 
 const videoPathHEVC = '/video/IMG_4454.mp4';
 const videoPathWebM = '/video/IMG_4454.webm';
-const demoPathHEVC = '/video/transparent-hevc.mp4';
-const demoPathWebM = '/video/transparent-vp9.webm';
 const bg = '/images/grey-noise-bg.png';
 
 // A page to test transparent video playback
