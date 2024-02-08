@@ -16,10 +16,10 @@ const TransparentVideoTest = () => {
         </H1>
       ))}
       <video
-        autoPlay
+        autoplay
         loop
         muted
-        playsInline
+        playsinline
         className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 w-full h-full'>
         <source
           src={videoPathHEVC}
