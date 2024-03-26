@@ -867,10 +867,10 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-"@next/codemod@^14.0.2":
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/@next/codemod/-/codemod-14.0.2.tgz#80c0ee2987abba5f9b771d8ac5491e8d9baf3c58"
-  integrity sha512-Z5GoEao21Mmbq/4mnjYLerjhb8KGrasuPfC/FzpnDDfrb3OxRByDnm3m2+opWaIlwlXhzp/aXAOS/FbEOYT/JQ==
+"@next/codemod@^14.1.4":
+  version "14.1.4"
+  resolved "https://registry.yarnpkg.com/@next/codemod/-/codemod-14.1.4.tgz#de52fe3bb3d9e4f213e0fbede3283b71c143158c"
+  integrity sha512-zudTCYLIXOi9pZdAl7zNm7TgeiHIJEsiyYJwtRvIQ5BhckCRPvPrxKonEN6KKbsLSCo+gOx6Jbla63n1CDK8bw==
   dependencies:
     cheerio "1.0.0-rc.9"
     execa "4.0.3"
@@ -3484,12 +3484,7 @@ fn-args@4.0.0:
   resolved "https://registry.yarnpkg.com/fn-args/-/fn-args-4.0.0.tgz#2e912f7a74c5e9ef25060bd60127d6a8680237a5"
   integrity sha512-M9XSagc92ejQhi+7kjpFPAO59xKbGRsbOg/9dfwSj84DfzB0pj+Q81DVD1pKr084Xf2oICwUNI0pCvGORmD9zg==
 
-follow-redirects@^1.14.8, follow-redirects@^1.15.0:
-  version "1.15.6"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
-  integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
-
-follow-redirects@^1.15.6:
+follow-redirects@^1.14.8, follow-redirects@^1.15.0, follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
