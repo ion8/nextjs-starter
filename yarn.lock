@@ -3489,12 +3489,7 @@ fn-args@4.0.0:
   resolved "https://registry.yarnpkg.com/fn-args/-/fn-args-4.0.0.tgz#2e912f7a74c5e9ef25060bd60127d6a8680237a5"
   integrity sha512-M9XSagc92ejQhi+7kjpFPAO59xKbGRsbOg/9dfwSj84DfzB0pj+Q81DVD1pKr084Xf2oICwUNI0pCvGORmD9zg==
 
-follow-redirects@^1.14.8, follow-redirects@^1.15.0:
-  version "1.15.6"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
-  integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
-
-follow-redirects@^1.15.6:
+follow-redirects@^1.14.8, follow-redirects@^1.15.0, follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
@@ -7167,10 +7162,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@^1.69.5:
-  version "1.69.5"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.69.5.tgz#23e18d1c757a35f2e52cc81871060b9ad653dfde"
-  integrity sha512-qg2+UCJibLr2LCVOt3OlPhr/dqVHWOa9XtZf2OjbLs/T4VPSJ00udtgJxH3neXZm+QqX8B+3cU7RaLqp1iVfcQ==
+sass@^1.76.0:
+  version "1.76.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.76.0.tgz#fe15909500735ac154f0dc7386d656b62b03987d"
+  integrity sha512-nc3LeqvF2FNW5xGF1zxZifdW3ffIz5aBb7I7tSvOoNu7z1RQ6pFt9MBuiPtjgaI62YWrM/txjWlOCFiGtf2xpw==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
