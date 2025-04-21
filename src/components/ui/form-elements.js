@@ -1,5 +1,4 @@
 import { Checkbox, Radio } from 'flowbite-react';
-import { SmText, XsText } from '@/ui/typography';
 import { useFieldArray, useForm } from 'react-hook-form';
 
 import { poppins } from '@/utils/fonts';
@@ -27,9 +26,9 @@ ${poppins.className}`;
 export const Label = ({ label, name, isRequired, className = '' }) => {
   return (
     <label htmlFor={name}>
-      <SmText className={`font-medium ${className}`}>
+      <span className={`body-sm font-medium ${className}`}>
         {label} {isRequired ? <span className={'inline text-red-600'}>*</span> : null}
-      </SmText>
+      </span>
     </label>
   );
 };
@@ -53,6 +52,7 @@ export const Input = ({
   placeholder,
   register,
   isRequired,
+  errorMessage,
   className = '',
 }) => {
   return (
@@ -71,6 +71,8 @@ export const Input = ({
         placeholder={placeholder}
         {...register}
       />
+
+      {errorMessage && <span className='text-sm text-red-500'>{errorMessage}</span>}
     </>
   );
 };
@@ -93,6 +95,7 @@ export const Textarea = ({
   placeholder,
   register,
   isRequired,
+  errorMessage,
   className = '',
 }) => {
   return (
@@ -109,6 +112,7 @@ export const Textarea = ({
         placeholder={placeholder}
         {...register}
       />
+      {errorMessage && <span className='text-sm text-red-500'>{errorMessage}</span>}
     </>
   );
 };
@@ -135,14 +139,9 @@ export const Select = ({
   value,
   register,
   isRequired,
+  errorMessage,
   className = '',
 }) => {
-  const { setValue, control } = useForm();
-
-  const handleSelectChange = value => {
-    setValue(name, value);
-  };
-
   return (
     <>
       <Label
@@ -155,22 +154,22 @@ export const Select = ({
         name={name}
         className={`${fieldStyles} ${className}`}
         {...register}
-        onChange={onChange ? onChange : e => handleSelectChange(e.target.value)}
+        onChange={onChange}
         value={value}>
         <option value=''>Select an option</option>
-        {options.map((option, index) => (
-          <option
-            key={index}
-            value={option}>
-            {option}
-          </option>
-        ))}
+        {options &&
+          options.map((option, index) => (
+            <option
+              key={index}
+              value={option}>
+              {option}
+            </option>
+          ))}
       </select>
+      {errorMessage && <span className='text-sm text-red-500'>{errorMessage}</span>}
     </>
   );
 };
-
-// todo: The checkbox if required, doesn't display the error message, which in fact should. This needs to be revisited.
 
 /**
  * @component - a checkbox list
@@ -191,19 +190,11 @@ export const CheckboxList = ({
   onChange,
   register,
   isRequired,
+  errorMessage,
   className = '',
   children,
   ...props
 }) => {
-  const { setValue, control } = useForm();
-  const { fields } = useFieldArray({
-    control,
-    name: name,
-  });
-  const handleCheckboxChange = index => {
-    setValue(`${name}.${index}`, !fields[index]?.value);
-  };
-
   return (
     <>
       <Label
@@ -214,23 +205,25 @@ export const CheckboxList = ({
       />
 
       <div className={`grid grid-flow-row lg:grid-flow-col mt-4`}>
-        {options.map((option, index) => (
-          <div key={index}>
-            <Checkbox
-              name={name[index]}
-              value={option}
-              className={`${checkboxStyles} ${className}`}
-              {...register}
-              onChange={onChange ? onChange : () => handleCheckboxChange(index)}
-            />{' '}
-            <Label
-              name={name + index}
-              label={option}
-              className='inline-block mb-4 ml-2 text-gray-600'
-            />
-          </div>
-        ))}
+        {options &&
+          options.map((option, index) => (
+            <div key={index}>
+              <Checkbox
+                name={name}
+                value={option}
+                className={`${checkboxStyles} ${className}`}
+                {...register}
+                onChange={onChange}
+              />{' '}
+              <Label
+                name={name + index}
+                label={option}
+                className='inline-block mb-4 ml-2 text-gray-600'
+              />
+            </div>
+          ))}
       </div>
+      {errorMessage && <span className='text-sm text-red-500'>{errorMessage}</span>}
     </>
   );
 };
@@ -256,16 +249,11 @@ export const RadioButtonList = ({
   onChange,
   register,
   isRequired,
+  errorMessage,
   className = '',
   children,
   ...props
 }) => {
-  const { setValue, control } = useForm();
-
-  const handleRadioChange = value => {
-    setValue(name, value);
-  };
-
   return (
     <>
       <Label
@@ -276,23 +264,25 @@ export const RadioButtonList = ({
       />
 
       <div className={`grid grid-flow-row lg:grid-flow-col mt-4`}>
-        {options.map((option, index) => (
-          <div key={index}>
-            <Radio
-              name={name[index]}
-              value={option}
-              className={`${radioStyles} ${className}`}
-              {...register}
-              onChange={onChange ? onChange : () => handleRadioChange(index)}
-            />{' '}
-            <Label
-              name={name + index}
-              label={option}
-              className='inline-block mb-4 ml-2 text-gray-600'
-            />
-          </div>
-        ))}
+        {options &&
+          options.map((option, index) => (
+            <div key={index}>
+              <Radio
+                name={name}
+                value={option}
+                className={`${radioStyles} ${className}`}
+                {...register}
+                onChange={onChange}
+              />{' '}
+              <Label
+                name={name + index}
+                label={option}
+                className='inline-block mb-4 ml-2 text-gray-600'
+              />
+            </div>
+          ))}
       </div>
+      {errorMessage && <span className='text-sm text-red-500'>{errorMessage}</span>}
     </>
   );
 };
