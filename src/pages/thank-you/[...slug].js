@@ -1,4 +1,4 @@
-import { Button } from '@/ui/buttons';
+import { ButtonLink } from '@/ui/buttons';
 import { Container } from '@/ui/containers';
 import Layout from '@/components/layout';
 
@@ -17,11 +17,11 @@ const ThankYou = () => {
             <p className='body-lg text-neutral-n600 pb-7'>
               Your information has been received.
             </p>
-            <Button
-              link='/'
+            <ButtonLink
+              href='/'
               label='Go to home page'
               className='w-[245px] mx-auto'
-              type='link'
+              variant='primary'
             />
           </div>
         </Container>

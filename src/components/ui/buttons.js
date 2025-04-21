@@ -117,41 +117,4 @@ export const ButtonNoLink = ({ label, className, ...props }) => {
   );
 };
 
-// /**
-//  * @description - A standard button component used throughout the application
-//  * @param {string} label - The text to display on the button
-//  * @param {string} variant - The style variant of the button (primary, secondary, tertiary)
-//  * @param {string} type - The button type (button, submit, reset)
-//  * @param {string} className - Additional CSS classes
-//  * @param {*} props - Additional props to pass to the button
-//  * @returns {JSX.Element} - A button component
-//  */
-// export const Button = ({
-//   label,
-//   variant = 'primary',
-//   type = 'button',
-//   className = '',
-//   ...props
-// }) => {
-//   let variantClass = '';
 
-//   if (variant === 'primary') {
-//     variantClass = 'text-white bg-burnt-sienna-bs600 hover:bg-burnt-sienna-bs700';
-//   } else if (variant === 'secondary') {
-//     variantClass =
-//       'text-white bg-transparent border border-white hover:bg-white hover:text-black';
-//   } else if (variant === 'tertiary') {
-//     variantClass = 'text-white bg-cobalt hover:bg-teal';
-//   } else {
-//     variantClass = 'text-black bg-gray-200 hover:bg-gray-300';
-//   }
-
-//   return (
-//     <button
-//       type={type}
-//       className={`justify-center items-center rounded-lg ${variantClass} py-3 px-6 focus:outline-none focus:ring-none ${className}`}
-//       {...props}>
-//       <span className='text-base font-normal'>{label}</span>
-//     </button>
-//   );
-// };

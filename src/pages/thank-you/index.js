@@ -1,6 +1,6 @@
 import { Container, SectionHeader } from '@/components/ui/containers';
 
-import { Button } from '@/components/ui/buttons';
+import { ButtonLink } from '@/components/ui/buttons';
 import Layout from '@/components/layout';
 
 const ThankYou = () => {
@@ -19,11 +19,11 @@ const ThankYou = () => {
             <p className='body-lg text-neutral-n600 pb-7'>
               Your information has been received.
             </p>
-            <Button
-              link='/'
+            <ButtonLink
+              href='/'
               label='Go to home page'
               className='w-[245px] mx-auto'
-              type='link'
+              variant='primary'
             />
           </div>
         </Container>
