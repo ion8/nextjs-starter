@@ -8,7 +8,6 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-
       // Colors from Figma design system: https://www.figma.com/design/4vMs6zbAodS70SA0cuR174/Design-Systems-2024-ion8?node-id=3-485&node-type=frame&t=QjDNb6K1uywaQm93-0
       colors: {
         red: {
@@ -155,13 +154,6 @@ module.exports = {
           b1000: '#000000',
           b0: '#FFFFFF',
         },
-
-        'deep-blue': '#00455F',
-        cobalt: '#4B5563',
-        teal: '#00EBF4',
-        cyan: '#00AEEF',
-        'light-blue': '#D6EBF4',
-        'cool-grey': '#EBF3F9',
       },
 
       backgroundImage: {

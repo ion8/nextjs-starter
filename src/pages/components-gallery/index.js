@@ -2,7 +2,6 @@ import { Container, SectionHeader } from '@/ui/containers';
 import { GallerySlider, Testimonials } from '@/ui/sliders';
 
 import { GeneralForm } from '@/components/ui/forms/general-form';
-import { H4 } from '@/ui/typography';
 import Layout from '@/components/layout';
 import { useRouter } from 'next/router';
 
@@ -33,7 +32,7 @@ const ComponentsGallery = () => {
         <div className='mb-6'>
           <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
 
-          <H4>Image Gallery</H4>
+          <h4 className='title-lg text-purple-p900 font-medium'>Image Gallery</h4>
           <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
         </div>
         <GallerySlider />
@@ -43,7 +42,7 @@ const ComponentsGallery = () => {
         <div className='mb-6'>
           <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
 
-          <H4>Testimonials</H4>
+          <h4 className='title-lg text-purple-p900 font-medium'>Testimonials</h4>
           <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
         </div>
         <Testimonials />
@@ -53,7 +52,7 @@ const ComponentsGallery = () => {
         <div className='mb-6'>
           <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
 
-          <H4>Contact Form</H4>
+          <h4 className='title-lg text-purple-p900 font-medium'>Contact Form</h4>
           <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
         </div>
         <GeneralForm conversionPageUrl={pageUrl} />

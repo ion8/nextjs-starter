@@ -1,4 +1,3 @@
-import { BodyText } from '@/ui/typography';
 import { EllipseIcon } from '@/svgs/icons';
 
 /**
@@ -16,7 +15,7 @@ export const Bullet = ({ color, className = '', children }) => {
           color={color}
         />
       </span>
-      <BodyText className='inline-block ml-3'>{children}</BodyText>
+      <span className='body-md text-neutral-n600 inline-block ml-3'>{children}</span>
     </li>
   );
 };

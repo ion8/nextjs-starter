@@ -1,7 +1,6 @@
 import { Container, FullWidthContainer } from '@/ui/containers';
 
-import { Button } from '@/ui/buttons';
-import { LabelBlock } from '@/components/ui/typography';
+import { ButtonLink } from '@/ui/buttons';
 import Layout from '@/components/layout';
 import { SubmitIcon } from '@/svgs/icons';
 import { TwoColsWImg } from '@/components/ui/grids';
@@ -25,7 +24,9 @@ const StyleGuideNew = () => {
       {/* Typography */}
       <FullWidthContainer className='text-center bg-purple-50 py-10 lg:py-20'>
         <Container>
-          <LabelBlock className='mb-10'>Duis ultricies eget nunc adipiscing</LabelBlock>
+          <span className='overline-lg text-purple-p700 font-medium mb-10 block'>
+            Duis ultricies eget nunc adipiscing
+          </span>
 
           <h1 className='display-lg font-semibold mb-4 text-neutral-n700'>
             Aenean integer amet ultricies nec dictumst sed
@@ -36,19 +37,19 @@ const StyleGuideNew = () => {
             maecenas urna viverra dolor id tempus lorem quis.
           </h4>
           <div className='flex gap-6 mt-10 justify-center flex-col sm:flex-row'>
-            <Button
-              type='link'
-              link='/'
+            <ButtonLink
+              href='/'
               label='Accumsan elementum'
               variant='primary'
               className='button-lg'
+              isTypeSubmit={false}
             />
-            <Button
-              type='link'
-              link='/'
+            <ButtonLink
+              href='/'
               label='Consectetur bibendum'
               variant='secondary'
               className='button-lg'
+              isTypeSubmit={false}
             />
           </div>
         </Container>
@@ -71,7 +72,7 @@ const StyleGuideNew = () => {
 
           <div className='grid grid-cols-1 gap-10 xl:grid-cols-3 my-20'>
             <div className='bg-purple-50 rounded-lg px-5 py-12'>
-              <LabelBlock className='mb-5'>Step 01</LabelBlock>
+              <span className='body-md text-neutral-n600'>Step 01</span>
               <h5 className='title-md font-medium mb-5'>
                 Sagittis lacus vitae mus at aliquam lacus id ut sed nunc.
               </h5>
@@ -85,7 +86,7 @@ const StyleGuideNew = () => {
             </div>
 
             <div className='bg-purple-50 rounded-lg px-5 py-12'>
-              <LabelBlock className='mb-5'>Step 02</LabelBlock>
+              <span className='body-md text-neutral-n600'>Step 02</span>
               <h5 className='title-md font-medium mb-5'>
                 Sagittis lacus vitae mus at aliquam lacus id ut sed nunc.
               </h5>
@@ -99,7 +100,7 @@ const StyleGuideNew = () => {
             </div>
 
             <div className='bg-purple-50 rounded-lg px-5 py-12'>
-              <LabelBlock className='mb-5'>Step 03</LabelBlock>
+              <span className='body-md text-neutral-n600'>Step 03</span>
               <h5 className='title-md font-medium mb-5'>
                 Egestas sollicitudin nam orci leo integer justo in in egestas.
               </h5>
@@ -125,46 +126,14 @@ const StyleGuideNew = () => {
             imgAlt=''
             imgW={500}
             imgH={500}>
-            <Button
-              type='link'
-              link='/'
-              label='Get started now for FREE!'
+            <ButtonLink
+              href='/'
+              label='Learn more'
               variant='primary'
               className='button-lg'
+              isTypeSubmit={false}
             />
           </TwoColsWImg>
-
-          <TwoColsWImg
-            title='Aliquam nisi id ut ac aliquam pellentesque dictumst'
-            subtitle='FERMENTUM SED ADIT'
-            desc='Lorem eu sollicitudin euismod blandit consectetur sit feugiat. Est pellentesque enim bibendum odio purus parturient. Viverra cursus ullamcorper sagittis nec sodales dolor id. Risus aliquam placerat.'
-            imgSrc='/images/Pexels Photo by Kristina Paukshtite.png'
-            imgAlt=''
-            imgW={500}
-            imgH={500}
-            imgOnTheLeft
-            className='mt-28'>
-            {' '}
-            <Button
-              type='link'
-              link='/'
-              label='Get started now for FREE!'
-              variant='primary'
-              className='button-lg'
-            />
-          </TwoColsWImg>
-        </Container>
-      </FullWidthContainer>
-
-      <FullWidthContainer className='bg-purple-p50 text-center'>
-        <Container>
-          <h2 className='display-lg font-semibold text-neutral-n700 mb-4'>
-            Egestas enim volutpat netus facilisis sed dolor.
-          </h2>
-          <h4 className='title-lg text-neutral-n600 font-medium'>
-            Ut quis quam senectus vulputate ut aliquam arcu gravida at. Varius at justo
-            consectetur quam vitae proin ut sed eu. Commodo natoque.
-          </h4>
         </Container>
       </FullWidthContainer>
     </Layout>
