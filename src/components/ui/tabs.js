@@ -1,8 +1,9 @@
-import { BodyText, H5 } from '@/ui/typography';
+import { horizontalTabsData, verticalTabsData } from '@/utils/tabs-data';
 
 import { Bullet } from '@/ui/bullets';
-import { Tabs } from 'flowbite-react';
+import Image from 'next/image';
 import { poppins } from '@/utils/fonts';
+import { Tabs } from 'flowbite-react';
 
 const customTabsTheme = {
   tablist: {
@@ -13,20 +14,20 @@ const customTabsTheme = {
       vertical: 'w-full lg:w-1/2 flex flex-col gap-8 lg:pr-8',
     },
     tabitem: {
-      base: 'p-4 text-[20px] font-semibold text-cobalt focus:outline-none',
+      base: 'p-4 text-[20px] font-semibold text-purple-p900 focus:outline-none',
       styles: {
         horizontal: {
           base: 'text-center py-5 h-[80px] px-8',
           active: {
-            on: 'active bg-cobalt rounded-[20px] text-white',
-            off: 'bg-transparent border border-[#ccc] rounded-[20px] hover:cursor',
+            on: 'active bg-burnt-sienna-bs600 rounded-[20px] text-white',
+            off: 'bg-transparent border border-neutral-n300 rounded-[20px] hover:cursor',
           },
         },
         vertical: {
-          base: 'text-left py-8 px-8',
+          base: 'text-left py-8 px-8 text-purple-p900',
           active: {
-            on: 'active bg-cobalt shadow-lg rounded-[20px] text-white',
-            off: 'bg-transparent border border-[#ccc] rounded-[20px] hover:cursor',
+            on: 'active bg-burnt-sienna-bs600 shadow-lg rounded-[20px] text-white',
+            off: 'bg-transparent border border-neutral-n300 rounded-[20px] hover:cursor text-purple-p900',
           },
         },
       },
@@ -42,42 +43,36 @@ const customTabsTheme = {
  */
 
 export const HorizontalTabs = ({ children }) => {
-  // the data can be moved to and exported from a data file under utils/ to increase maintenance and organization
+  // Using data from the tabs-data.js file
+  const data = horizontalTabsData;
 
-  const data = [
-    {
-      title: 'Tab One',
-      details:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    },
-    {
-      title: 'Tab Two',
-      details:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      title: 'Tab Three',
-      details:
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    },
-    {
-      title: 'Tab Four',
-      details:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    },
-  ];
   return (
     <Tabs
+      theme={customTabsTheme}
       style='horizontal'
-      theme={customTabsTheme}>
+      className='w-full'>
       {data.map((tab, index) => (
         <Tabs.Item
           key={index}
-          title={tab.title}>
-          <BodyText className='mt-16 mb-12'>{tab.details}</BodyText>
+          title={tab.title}
+          active={index === 0}>
+          <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
+            <div className='text-left'>
+              <h5 className='title-lg text-purple-p900 font-medium mb-6'>{tab.title}</h5>
+              <p className='body-lg text-neutral-n600 mb-8'>{tab.details}</p>
+            </div>
+            <div className='relative w-full h-[300px] md:h-[400px]'>
+              <Image
+                src='https://via.placeholder.com/600x400'
+                alt={`Illustration for ${tab.title} tab`}
+                fill
+                sizes='(max-width: 768px) 100vw, 50vw'
+                className='object-cover border-2 border-dashed border-neutral-n300 rounded-lg p-2'
+              />
+            </div>
+          </div>
         </Tabs.Item>
       ))}
-      {/* end of tabs.item */}
     </Tabs>
   );
 };
@@ -88,37 +83,9 @@ export const HorizontalTabs = ({ children }) => {
  * @returns
  */
 export const VerticalTabs = ({ children }) => {
-  // the data can be moved to and exported from a data file under utils/ to increase maintenance and organization
+  // Using data from the tabs-data.js file
+  const data = verticalTabsData;
 
-  const data = [
-    {
-      title: 'Tab One',
-      details: [
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
-        'Ut enim ad minim veniam',
-        'Excepteur sint occaecat cupidatat non proident',
-        'Ut enim ad minim veniam',
-      ],
-    },
-    {
-      title: 'Tab Two',
-      details: [
-        'Lorem ipsum dolor sit amet',
-        'Ut enim ad minim veniam',
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
-        'Excepteur sint occaecat cupidatat non proident',
-      ],
-    },
-    {
-      title: 'Tab Three',
-      details: [
-        'Ut enim ad minim veniam',
-        'Lorem ipsum dolor sit amet',
-        'Excepteur sint occaecat cupidatat non proident',
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
-      ],
-    },
-  ];
   return (
     <div className='lg:relative'>
       <Tabs
@@ -128,14 +95,14 @@ export const VerticalTabs = ({ children }) => {
           <Tabs.Item
             key={index}
             title={tab.title}>
-            <div className='w-full lg:w-[50%] lg:left-[50%] lg:top-0 lg:absolute mt-6 lg:mt-0 text-left py-12 px-4 md:p-10 bg-cobalt shadow-lg rounded-[20px] h-full'>
-              <H5 className='mb-12 text-white'>{tab.title}</H5>
+            <div className='w-full lg:w-[50%] lg:left-[50%] lg:top-0 lg:absolute mt-6 lg:mt-0 text-left py-12 px-4 md:p-10 bg-purple-50 shadow-lg rounded-[20px] h-full'>
+              <h5 className='mb-12 text-purple-p900'>{tab.title}</h5>
               <ul>
                 {tab.details.map((item, index) => (
                   <Bullet
                     key={index}
-                    className='mb-4 text-white'
-                    color='cyan'>
+                    className='mb-4 text-neutral-n600'
+                    color='purple'>
                     {item}
                   </Bullet>
                 ))}
