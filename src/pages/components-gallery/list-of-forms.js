@@ -4,13 +4,13 @@ import {
   SectionHeader,
 } from '@/components/ui/containers';
 
+import { dynamicFields } from '@/utils/data/dynamic-fields';
 import { FormWConditionalFields } from '@/components/ui/forms/form-with-conditional-fields';
 import { FormWDynamicFields } from '@/components/ui/forms/form-with-dynamic-fields';
 import { GeneralForm } from '@/components/ui/forms/general-form';
 import Layout from '@/components/layout';
 import { NewsletterForm } from '@/components/ui/forms/newsletter-form';
 import { TwoStepForm } from '@/components/ui/forms/two-step';
-import { dynamicFields } from '@/utils/data/dynamic-fields';
 
 /** This page will list different variants of forms (simple contact form, two-step form, modal form and newsletter.). */
 const ListOfForms = () => {
@@ -18,7 +18,7 @@ const ListOfForms = () => {
     <Layout seoTitle='List of Forms'>
       {/* Should be removed once the dynamic form is approved */}
       {/* The general form */}
-      {/* <FullWidthContainer>
+      <FullWidthContainer>
         <Container>
           <SectionHeader
             title='General form'
@@ -26,7 +26,7 @@ const ListOfForms = () => {
           />
           <GeneralForm />
         </Container>
-      </FullWidthContainer> */}
+      </FullWidthContainer>
 
       {/* The form with dynamic fields */}
       <FullWidthContainer>

@@ -1,11 +1,10 @@
 import * as Yup from 'yup';
 
+import { FormProvider, useForm } from 'react-hook-form';
 import { Input, RadioButtonList, Select } from '@/ui/form-elements';
 
-import { Button } from '@/ui/buttons';
-import { XsText } from '@/ui/typography';
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
+import { Button } from '@/ui/buttons';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -37,9 +36,11 @@ export const FormWConditionalFields = ({ conversionPageUrl }) => {
     ageGroupLst: Yup.string(),
   });
 
-  const { formState, register, handleSubmit } = useForm({
+  const methods = useForm({
     resolver: yupResolver(validationSchema),
   });
+
+  const { formState, register, handleSubmit } = methods;
   const { errors } = formState;
 
   const onSubmit = data => {
@@ -48,68 +49,72 @@ export const FormWConditionalFields = ({ conversionPageUrl }) => {
     // add the submit code for webhook and axios call here - you can find the sample code in the general-form.js
   };
   return (
-    <div className='justify-center py-20 md:text-left'>
-      <form
-        id='form'
-        className=''
-        onSubmit={handleSubmit(onSubmit)}>
-        <div className='grid grid-cols-1 gap-10 md:grid-cols-2'>
-          {/* Dropdown Field - Required */}
-          <div className=''>
-            <Select
-              label='Tell us about your department'
-              name='aboutYourDepartment'
-              isRequired
-              options={['Software Engineering', 'Sales & Marketing', 'Design']}
-              register={{
-                ...register('aboutYourDepartment'),
-              }}
-              onChange={displayConditionalField}
-              value={selectedOption}
-              errorMessage={errors.aboutYourDepartment?.message}
-            />
-          </div>
-          <div>
-            {/* conditional field that's bound to the aboutYourDepartment dropdown.  */}
-            {selectedOption === 'Software Engineering' ? (
-              <Input
-                label='Tell us something about your department'
-                name='deptDetails'
-                type='text'
-                placeholder='Write something about your department'
-                register={{ ...register('deptDetails', { required: false }) }}
+    <div className='justify-center pt-20 lg:text-left'>
+      <FormProvider {...methods}>
+        <form
+          id='form'
+          className=''
+          onSubmit={handleSubmit(onSubmit)}>
+          <div className='grid grid-cols-1 gap-10 md:grid-cols-2'>
+            {/* Dropdown Field - Required */}
+            <div className=''>
+              <Select
+                label='Tell us about your department'
+                name='aboutYourDepartment'
+                isRequired
+                options={['Software Engineering', 'Sales & Marketing', 'Design']}
+                register={{
+                  ...register('aboutYourDepartment'),
+                }}
+                onChange={displayConditionalField}
+                value={selectedOption}
+                errorMessage={errors.aboutYourDepartment?.message}
               />
-            ) : null}
-          </div>
+            </div>
+            <div>
+              {/* conditional field that's bound to the aboutYourDepartment dropdown.  */}
+              {selectedOption === 'Software Engineering' ? (
+                <Input
+                  label='Tell us something about your department'
+                  name='deptDetails'
+                  type='text'
+                  placeholder='Write something about your department'
+                  register={{ ...register('deptDetails', { required: false }) }}
+                />
+              ) : null}
+            </div>
 
-          {/* Radio buttons list */}
-          <div className=''>
-            <RadioButtonList
-              label='What is your age group'
-              name='ageGroupLst'
-              options={['2 - 12', '13 - 30', '31 - 45']}
-              register={{ ...register('ageGroupLst') }}
-              onChange={e => setAgeGroupSelection(e.target.value)}
-            />
-            {/* conditional field that's bound to the ageGroupLst radio buttons.  */}
-            {ageGroupSelection === '2 - 12' ? (
-              <XsText className='mt-2'>You have a free ticket!</XsText>
-            ) : ageGroupSelection === '13 - 30' || ageGroupSelection === '31 - 45' ? (
-              <XsText className='mt-2'>You have 10% discount!</XsText>
-            ) : null}
-          </div>
+            {/* Radio buttons list */}
+            <div className=''>
+              <RadioButtonList
+                label='What is your age group'
+                name='ageGroupLst'
+                options={['2 - 12', '13 - 30', '31 - 45']}
+                register={{ ...register('ageGroupLst') }}
+                onChange={e => setAgeGroupSelection(e.target.value)}
+              />
+              {/* conditional field that's bound to the ageGroupLst radio buttons.  */}
+              {ageGroupSelection === '2 - 12' ? (
+                <p className='text-[12px] leading-[18px] mt-2'>
+                  You have a free ticket!
+                </p>
+              ) : ageGroupSelection === '13 - 30' || ageGroupSelection === '31 - 45' ? (
+                <p className='text-[12px] leading-[18px] mt-2'>You have 10% discount!</p>
+              ) : null}
+            </div>
 
-          {/* Submit Button */}
-          <div className='flex mt-5 md:col-span-2 md:justify-start'>
-            <Button
-              className='px-10'
-              label={loading ? 'Submitting...' : 'Submit'}
-              variant='primary'
-              type='button'
-            />
+            {/* Submit Button */}
+            <div className='flex mt-5 md:col-span-2 md:justify-start'>
+              <Button
+                className='px-10'
+                label={loading ? 'Submitting...' : 'Submit'}
+                variant='primary'
+                type='button'
+              />
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </FormProvider>
     </div>
   );
 };
