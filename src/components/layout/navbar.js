@@ -110,12 +110,13 @@ const Navbar = ({ conversionPageUrl }) => {
             ),
           )}
         </div>
-        <div className='hidden md:block'>
+        {/* not working as expected */}
+        {/* <div className='hidden md:block'>
           <FormPopupBtn
             className='h-12 w-[200px] hidden md:flex'
             label='Contact us'
           />
-        </div>
+        </div> */}
 
         {/* mobile menu */}
 
