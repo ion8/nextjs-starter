@@ -211,6 +211,7 @@ select {
 .mySwiper {
   padding-left: 15px !important;
   padding-right: 15px !important;
+  padding-bottom: 48px !important;
 }
 
 .swiper-button-next:after {
@@ -220,4 +221,11 @@ select {
 .swiper-button-prev:after {
   position: relative;
   left: -10px;
+}
+
+.swiper-pagination {
+  bottom: 0px !important;
+  left: 0;
+  width: 100%;
+  text-align: center;
 }
