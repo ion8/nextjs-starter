@@ -269,7 +269,6 @@ export const ControlledSliderWImages = () => {
             }}>
             {controlledSliderImages.map((image, index) => (
               <SwiperSlide key={index}>
-                {/* For more details and best practices, see: docs/Best Practices.md */}
                 <div
                   className='relative w-full h-[300px] md:h-[400px] border border-dashed border-neutral-n300 rounded-lg overflow-hidden'
                   style={{ paddingBottom: `${(image.imgH / image.imgW) * 100}%` }}>
@@ -307,7 +306,6 @@ export const ControlledSliderWImages = () => {
                     setActiveIndex(index);
                   }
                 }}>
-                {/* For more details and best practices, see: docs/Best Practices.md */}
                 <Image
                   src={image.imgSrc}
                   alt={`Thumbnail for ${image.imgAlt}`}
