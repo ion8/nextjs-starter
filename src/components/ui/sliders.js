@@ -93,6 +93,8 @@ export const HeroWithSlider = () => {
                 )}
               </div>
               <div className='border border-dashed border-gray-300 rounded-lg overflow-hidden relative w-full'>
+                {/* For more details and best practices, see: docs/Best Practices.md */}
+
                 <div
                   className='relative w-full'
                   style={{ paddingBottom: `${(slide.imgH / slide.imgW) * 100}%` }}>
@@ -100,7 +102,7 @@ export const HeroWithSlider = () => {
                     src={slide.imgSrc}
                     alt={slide.imgAlt}
                     fill
-                    sizes='(max-width: 768px) 100vw, 50vw'
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                     priority={index === 0}
                     className='object-cover'
                   />
@@ -125,21 +127,26 @@ export const GallerySlider = () => {
       <Swiper
         slidesPerView={3}
         spaceBetween={20}
-        grid={{
-          rows: 2,
-        }}
         pagination={{
           clickable: true,
         }}
-        modules={[Grid, Pagination]}
+        modules={[Navigation, Pagination]}
         className='mySwiper'
         aria-label='Gallery slider'>
         {galleryImages.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className='relative w-full h-[200px] md:h-[300px]'>
+            {/*
+              We use a wrapper div with a dynamic padding-bottom based on the image's aspect ratio.
+              This ensures the browser reserves the correct space for the image before it loads, preventing layout shift (CLS) and improving performance. The Next.js Image 'fill' prop makes the image responsive, and the aspect ratio is enforced by the wrapper.
+              
+              For more details and best practices, see: docs/Best Practices.md
+            */}
+            <div
+              className='relative w-full border border-dashed border-gray-300 rounded-lg overflow-hidden bg-gray-100'
+              style={{ paddingBottom: `${(image.imgH / image.imgW) * 100}%` }}>
               <Image
-                src={image.src}
-                alt={image.alt}
+                src={image.imgSrc}
+                alt={image.imgAlt}
                 fill
                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 className='object-cover rounded-lg'
@@ -212,7 +219,7 @@ export const TestimonialCard = ({
             src={reviewerImgSrc}
             alt={reviewerImgAlt}
             fill
-            sizes='(max-width: 768px) 80px, 96px'
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             className='object-cover'
           />
         </div>
@@ -262,14 +269,15 @@ export const ControlledSliderWImages = () => {
             }}>
             {controlledSliderImages.map((image, index) => (
               <SwiperSlide key={index}>
-                <div className='relative w-full h-[300px] md:h-[400px] border border-dashed border-neutral-n300 rounded-lg overflow-hidden'>
+                <div
+                  className='relative w-full h-[300px] md:h-[400px] border border-dashed border-neutral-n300 rounded-lg overflow-hidden'
+                  style={{ paddingBottom: `${(image.imgH / image.imgW) * 100}%` }}>
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={image.imgSrc}
+                    alt={image.imgAlt}
                     fill
-                    sizes='(max-width: 768px) 100vw, 75vw'
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                     className='object-cover'
-                    priority={index === 0}
                   />
                 </div>
               </SwiperSlide>
@@ -299,10 +307,10 @@ export const ControlledSliderWImages = () => {
                   }
                 }}>
                 <Image
-                  src={image.src}
-                  alt={`Thumbnail for ${image.alt}`}
+                  src={image.imgSrc}
+                  alt={`Thumbnail for ${image.imgAlt}`}
                   fill
-                  sizes='(max-width: 768px) 25vw, 20vw'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                   className='object-cover'
                 />
               </div>
