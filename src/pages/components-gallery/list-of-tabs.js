@@ -14,7 +14,7 @@ const ListOfTabs = () => {
       seoTitle='List of Tabs'
       seoDesc=''>
       {/* Horizontal tabs */}
-      <FullWidthContainer className='bg-cool-gray'>
+      <FullWidthContainer className='bg-purple-50'>
         <Container className='text-center'>
           <SectionHeader
             title='Horizontal Tabs'
@@ -25,7 +25,7 @@ const ListOfTabs = () => {
       </FullWidthContainer>
 
       {/* Vertical tabs */}
-      <FullWidthContainer>
+      <FullWidthContainer className='bg-white'>
         <Container className='text-center'>
           <SectionHeader
             title='Vertical Tabs'

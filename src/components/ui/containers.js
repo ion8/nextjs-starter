@@ -1,5 +1,3 @@
-import { H2, LgText } from '@/ui/typography';
-
 // this container is used when there's a full bg color or bg noise/pattern
 
 /**
@@ -59,14 +57,20 @@ export const Container = ({ align, className = '', children }) => {
  */
 export const SectionHeader = ({ title, subTitle, bgDark, className, children }) => {
   return (
-    <div className='mb-10 text-center'>
-      <H2 className={` ${bgDark ? 'text-white' : 'text-gray-900'}`}>{title}</H2>
-      {subTitle ? (
-        <LgText className={` ${bgDark ? 'text-gray-300' : 'text-gray-500'} mt-4`}>
+    <div className={`text-center ${className}`}>
+      {title && (
+        <h2
+          className={`display-md text-purple-p900 font-semibold mb-4 ${
+            bgDark ? 'text-white' : ''
+          }`}>
+          {title}
+        </h2>
+      )}
+      {subTitle && (
+        <p className={`body-lg text-neutral-n600 mb-8 ${bgDark ? 'text-white' : ''}`}>
           {subTitle}
-        </LgText>
-      ) : null}
-
+        </p>
+      )}
       {children}
     </div>
   );

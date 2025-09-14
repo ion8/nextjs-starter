@@ -1,5 +1,5 @@
 import { Container, FullWidthContainer } from '@/ui/containers';
-import { RepeatableCols, TwoColsWImg } from '@/ui/grids';
+import { RepeatableCols, TwoColsWImg } from '@/components/ui/grids';
 
 import Layout from '@/components/layout';
 
@@ -10,15 +10,14 @@ import Layout from '@/components/layout';
 const ListOfGrids = () => {
   return (
     <Layout seoTitle='List of Grids'>
-      {/* hero sample */}
+      {/* Hero section with image on right */}
       <FullWidthContainer>
         <Container>
           <TwoColsWImg
-            title='H1 section title'
-            desc="Bring your napkin sketch to us, and we'll plan the journey from
-prototype to launch"
-            imgSrc='https://via.placeholder.com/600x400/00AEEF/ffffff'
-            imgAlt=''
+            title='Hero Section with Image on Right'
+            desc="Bring your napkin sketch to us, and we'll plan the journey from prototype to launch"
+            imgSrc='/images/hero-image.jpg'
+            imgAlt='Hero section illustration'
             imgW={980}
             imgH={854}
             isHero
@@ -26,16 +25,15 @@ prototype to launch"
         </Container>
       </FullWidthContainer>
 
-      {/* general 2 col section */}
-
+      {/* Two column section with image on left */}
       <FullWidthContainer className='bg-cool-grey'>
         <Container>
           <TwoColsWImg
-            title='H3 title here'
-            desc="Bring your napkin sketch to us, and we'll plan the journey from
-prototype to launch"
-            imgSrc='https://via.placeholder.com/600x400/#00EBF4/ffffff'
-            imgAlt=''
+            title='Two Columns with Image on Left'
+            subtitle='SECTION SUBTITLE'
+            desc="Bring your napkin sketch to us, and we'll plan the journey from prototype to launch"
+            imgSrc='/images/feature-image.jpg'
+            imgAlt='Feature illustration'
             imgW={980}
             imgH={854}
             imgOnTheLeft
@@ -43,10 +41,40 @@ prototype to launch"
         </Container>
       </FullWidthContainer>
 
+      {/* Three column grid */}
       <FullWidthContainer>
         <Container>
+          <h2 className='display-md text-purple-p900 font-semibold mb-8'>
+            Three Column Grid
+          </h2>
           <RepeatableCols
-            numberOfCols='3'
+            numberOfCols={3}
+            align='center'
+          />
+        </Container>
+      </FullWidthContainer>
+
+      {/* Two column grid */}
+      <FullWidthContainer className='bg-cool-grey'>
+        <Container>
+          <h2 className='display-md text-purple-p900 font-semibold mb-8'>
+            Two Column Grid
+          </h2>
+          <RepeatableCols
+            numberOfCols={2}
+            align='left'
+          />
+        </Container>
+      </FullWidthContainer>
+
+      {/* Four column grid */}
+      <FullWidthContainer>
+        <Container>
+          <h2 className='display-md text-purple-p900 font-semibold mb-8'>
+            Four Column Grid
+          </h2>
+          <RepeatableCols
+            numberOfCols={4}
             align='center'
           />
         </Container>

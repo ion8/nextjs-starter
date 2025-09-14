@@ -1,10 +1,8 @@
-import { BodyText, H3 } from '@/ui/typography';
-
 import { CloseIcon } from '@/svgs/icons';
+import { dynamicFields } from '@/utils/data/dynamic-fields';
 import { FormWDynamicFields } from '@/ui/forms/form-with-dynamic-fields';
 import Image from 'next/image';
 import { Modal } from 'flowbite-react';
-import { dynamicFields } from '@/utils/data/dynamic-fields';
 import { useRouter } from 'next/router';
 
 // WIP ImageModal is NOT ready for review yet.
@@ -52,8 +50,7 @@ export const ImageModal = ({
                 alt={imgAlt}
                 width={imgOW}
                 height={imgOH}
-                sizes={'(max-width: 768px) 100vw, (max-width: 1280px) 75vw, 33vw'}
-                className='inline-block w-full'
+                className='w-full'
               />
             </div>
           </div>
@@ -64,52 +61,50 @@ export const ImageModal = ({
 };
 
 /**
- * @description - FormModal component is used to load the form in a popup modal usually from the navigation button or a button in a section. This example here specifically loads the form in a modal when the contact button in the navigation bar is clicked.
- * @param {string} pageTitle - used for page title tracking, could also be used for form title in some specific cases
- * @returns {JSX.Element} - the form in a modal
+ * @description - this component uses the Flowbite-react Modal component in order to load a form in a modal
+ * @param {string} pageTitle - the title of the page that the form is being loaded from
  */
-
 export const FormModal = ({ pageTitle }) => {
   const router = useRouter();
+
   const handleRoute = () => {
     // Preserve existing query parameters and remove showForm parameter
-    const newQuery = { ...router.query };
-    delete newQuery.showForm;
-    router.push({ pathname: router.pathname, query: newQuery }, undefined, {
+    const { showForm, ...restQuery } = router.query;
+    router.push({ pathname: router.pathname, query: restQuery }, undefined, {
       shallow: true,
     });
   };
 
   return (
-    <>
-      <div
-        className={`fixed inset-0 z-[1000] flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-[#0a416bd9] p-6 md:p-0`}>
-        <div
-          id='contact-form-modal'
-          className='relative w-full border-deep-blue mx-auto mt-[400px] md:mt-0'>
-          <div className='relative bg-white md:w-[700px] p-6 rounded-[10px] shadow-lg mx-auto'>
-            {/* modal close button */}
-            <div className='flex justify-end w-full'>
-              <span
-                id='modal-close-btn'
-                className='cursor-pointer'
-                onClick={handleRoute}>
-                <CloseIcon />
-              </span>
+    <Modal
+      dismissible
+      show={true}
+      onClose={handleRoute}
+      className='fixed left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto bg-gray-900 top-20 bg-opacity-80 pt-28 md:pt-0 h-[100vh]'>
+      <div className='relative h-full mx-auto md:h-auto'>
+        <div className='relative shadow'>
+          {/* the modal close button */}
+          <button
+            type='button'
+            className='absolute z-10 top-4 right-5 bg-transparent p-1.5 ml-auto inline-flex items-center'
+            data-modal-hide='popup-modal'
+            aria-label='Close'
+            onClick={handleRoute}>
+            <CloseIcon />
+            <span className='sr-only'>Close popup form</span>
+          </button>
+          <div className='grid grid-cols-1 text-center'>
+            <div className='relative'>
+              <h3 className='title-lg text-purple-p900 font-medium mb-6'>{pageTitle}</h3>
+              <p className='body-lg text-neutral-n600 mb-8'>
+                Please fill out the form below and we will get back to you as soon as
+                possible.
+              </p>
+              <FormWDynamicFields fields={dynamicFields} />
             </div>
-            <H3>Form in a modal</H3>
-            <BodyText>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur.
-            </BodyText>
-            {/* dynamic fields are loaded from /utils/data/dynamic-fields */}
-            <FormWDynamicFields
-              fields={dynamicFields}
-              pageTitle={pageTitle}
-            />
           </div>
         </div>
       </div>
-    </>
+    </Modal>
   );
 };

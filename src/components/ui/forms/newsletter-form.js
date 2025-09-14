@@ -1,27 +1,45 @@
-import { BodyText, H3 } from '@/ui/typography';
+import * as Yup from 'yup';
 
-import { Button } from '@/ui/buttons';
+import { FormProvider, useForm } from 'react-hook-form';
+
 import axios from 'axios';
+import { Button } from '@/ui/buttons';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const NewsletterForm = () => {
   const router = useRouter();
-
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // this handler should be further extended for a real project
-  const handleSubmit = e => {
-    // e.preventDefault();
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Please enter a valid email')
+      .required('Email is required'),
+    agreeToCommunications: Yup.boolean()
+      .oneOf([true], 'You must agree to receive communications')
+      .required(),
+  });
+
+  const methods = useForm({
+    resolver: yupResolver(validationSchema),
+    defaultValues: {
+      email: '',
+      agreeToCommunications: false,
+    },
+  });
+
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods;
+
+  const onSubmit = data => {
+    // this handler should be further extended for a real project
     // const submitURL = `/api/newsletter-form`;
-    // const formData = new FormData(e.target);
-    // if (formData) {
-    //   const data = {
-    //     email: formData.get('email'),
-    //     page: router.pathname,
-    //   };
+    // if (data) {
     //   axios
-    //     .post(submitURL, data)
+    //     .post(submitURL, { ...data, page: router.pathname })
     //     .then(res => {
     //       setSubmitSuccess(true);
     //     })
@@ -30,62 +48,78 @@ export const NewsletterForm = () => {
     //       alert('There was an error submitting your form. Please try again.');
     //     });
     // }
+    console.log(data);
+    setSubmitSuccess(true);
   };
 
   return (
     <>
       <div className='text-center'>
-        <H3 className='font-bold text-white'>
+        <h3 className='text-[30px] leading-[38px] font-bold text-white'>
           {submitSuccess ? (
             'Thank you for subscribing!'
           ) : (
             <span>Newsletter subscription form</span>
           )}
-        </H3>
-        <BodyText className='mt-5 text-white'>
+        </h3>
+        <div className='leading-normal text-base mt-5 text-white'>
           {submitSuccess
             ? 'You will receive an email shortly with a link to confirm your subscription.'
             : 'Receive the latest blog posts and news updates. No spam.'}
-        </BodyText>
+        </div>
         <div className='mt-8'>
           {!submitSuccess ? (
-            <form
-              className='flex flex-col items-center justify-center md:gap-4'
-              onSubmit={handleSubmit}>
-              <div className='flex flex-col w-full gap-4 md:flex-row md:justify-center'>
-                <input
-                  className={`w-full px-6 py-4 placeholder-black border rounded-md focus:border-cobalt border-gray' md:w-96`}
-                  name='email'
-                  type='email'
-                  placeholder='Email *'
-                  required
-                />
-                <Button
-                  label='Subscribe'
-                  type='button'
-                  variant='tertiary'
-                  className='px-10'
-                />
-              </div>
+            <FormProvider {...methods}>
+              <form
+                className='flex flex-col items-center justify-center md:gap-4'
+                onSubmit={handleSubmit(onSubmit)}>
+                <div className='flex flex-col w-full gap-4 md:flex-row md:justify-center'>
+                  <div className='w-full md:w-96'>
+                    <input
+                      className={`w-full px-6 py-4 placeholder-black border rounded-md focus:border-cobalt border-gray ${
+                        errors.email ? 'border-red-500' : ''
+                      }`}
+                      {...methods.register('email')}
+                      type='email'
+                      placeholder='Email *'
+                    />
+                    {errors.email && (
+                      <span className='text-sm text-red-500'>
+                        {errors.email.message}
+                      </span>
+                    )}
+                  </div>
+                  <Button
+                    label='Subscribe'
+                    type='submit'
+                    variant='tertiary'
+                    className='px-10'
+                  />
+                </div>
 
-              <div className='flex'>
-                <input
-                  id='newsletterCheckbox'
-                  type='checkbox'
-                  defaultValue
-                  className='focus:ring-2 focus:ring-transparent text-black w-4 h-4 p-2.5 bg-gray-50 rounded border border-gray-300'
-                  required
-                />
+                <div className='flex'>
+                  <input
+                    id='newsletterCheckbox'
+                    type='checkbox'
+                    {...methods.register('agreeToCommunications')}
+                    className='focus:ring-2 focus:ring-transparent text-black w-4 h-4 p-2.5 bg-gray-50 rounded border border-gray-300'
+                  />
 
-                <label
-                  htmlFor='newsletterCheckbox'
-                  className='ml-2 text-left cursor-pointer'>
-                  <BodyText className='text-white'>
-                    I agree to receive email communications from ion8
-                  </BodyText>
-                </label>
-              </div>
-            </form>
+                  <label
+                    htmlFor='newsletterCheckbox'
+                    className='ml-2 text-left cursor-pointer'>
+                    <div className='text-white'>
+                      I agree to receive email communications from ion8
+                    </div>
+                  </label>
+                </div>
+                {errors.agreeToCommunications && (
+                  <span className='text-sm text-red-500'>
+                    {errors.agreeToCommunications.message}
+                  </span>
+                )}
+              </form>
+            </FormProvider>
           ) : null}
         </div>
       </div>

@@ -4,7 +4,6 @@ import {
   GallerySlider,
   HeroWithSlider,
   Testimonials,
-  ThumbnailGallerySlider,
 } from '@/ui/sliders';
 
 import Layout from '@/components/layout';
@@ -39,14 +38,8 @@ const ListOfSliders = () => {
         <Testimonials />
       </FullWidthContainer>
 
-      {/* Thumbnail gallery slider with title and description */}
-      <FullWidthContainer>
-        <SectionHeader
-          title='Gallery Slider with Thumbnails'
-          subTitle='Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-        />
-        <ThumbnailGallerySlider />
-      </FullWidthContainer>
+      {/* Thumbnail gallery slider with title and description - component has been moved to its own file because it's not working right now */}
+
       {/* Controlled Slider with images */}
       <FullWidthContainer>
         <SectionHeader

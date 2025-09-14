@@ -7,10 +7,10 @@ import {
   Select,
   Textarea,
 } from '@/ui/form-elements';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import { Button } from '@/ui/buttons';
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
+import { Button, ButtonLink } from '@/ui/buttons';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -27,8 +27,15 @@ export const GeneralForm = ({ conversionPageUrl }) => {
     aboutYourDepartment: Yup.string().required('Please select your department'),
     hobbiesChk: Yup.array(),
     ageGroupLst: Yup.string(),
-    message: Yup.string().required('Please enter your message'),
+    description: Yup.string().required('Please enter your message'),
   });
+
+  // const methods = useForm({
+  //   resolver: yupResolver(validationSchema),
+  // });
+
+  // const { formState, register, handleSubmit } = methods;
+  // const { errors } = formState;
 
   const { formState, register, handleSubmit } = useForm({
     resolver: yupResolver(validationSchema),
@@ -51,7 +58,7 @@ export const GeneralForm = ({ conversionPageUrl }) => {
         aboutYourDepartment: data.aboutYourDepartment,
         hobbiesChk: data.hobbiesChk,
         ageGroupLst: data.ageGroupLst,
-        message: data.message,
+        description: data.description,
         page: router.pathname,
         pageTitle: { pageTitle },
       };
@@ -74,8 +81,10 @@ export const GeneralForm = ({ conversionPageUrl }) => {
     }
     */
   };
+
   return (
     <div className='justify-center pt-20 lg:text-left'>
+      {/* <FormProvider {...formState}> */}
       <form
         id='form'
         className=''
@@ -154,25 +163,26 @@ export const GeneralForm = ({ conversionPageUrl }) => {
           <div>
             <Textarea
               label='Your message'
-              name='message'
-              id='message'
+              name='description'
+              id='description'
               isRequired
-              register={{ ...register('message') }}
-              errorMessage={errors.message?.message}
+              register={{ ...register('description') }}
+              errorMessage={errors.description?.message}
             />
           </div>
 
           {/* Submit Button */}
           <div className='flex md:col-span-2 md:justify-end'>
-            <Button
+            <ButtonLink
               className='px-10'
               label={loading ? 'Submitting...' : 'Submit'}
               variant='primary'
-              type='button'
+              isTypeSubmit
             />
           </div>
         </div>
       </form>
+      {/* </FormProvider> */}
     </div>
   );
 };
